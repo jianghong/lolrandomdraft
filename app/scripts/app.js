@@ -16,9 +16,10 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ngMaterial'
+    'ngMaterial',
+    'ngClipboard'
   ])
-  .config(function ($routeProvider, $httpProvider) {
+  .config(function ($routeProvider, $locationProvider, $httpProvider, ngClipProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -28,4 +29,7 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+
+    $locationProvider.html5Mode(true).hashPrefix('!');
+    ngClipProvider.setPath("bower_components/zeroclipboard/dist/ZeroClipboard.swf");
   });

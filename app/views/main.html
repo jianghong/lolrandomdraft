@@ -1,10 +1,27 @@
-<md-content>
-  <div layout="row" layout-align="center center">
-    <md-button class="md-raised md-primary" ng-click="randomizePool(24)">Randomize Pool!</md-button>
-  </div>
-  <md-grid-list md-gutter="5px" md-cols="9" md-cols-sm="3" md-cols-md="5" md-cols-lg="7" md-row-height="120px">
-    <md-grid-tile ng-repeat="champ in champs">
-      <img ng-src="{{champ.imgSquare}}">
-    </md-grid-tile>
-  </md-grid-list>
-</md-content>
+<div layout="column" layout-fill>
+    <md-toolbar>
+    <div class="md-toolbar-tools">
+      <span>LoL Random Draft</span>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+  <md-content>
+    <div layout-align="center center">
+      <div layout="row" layout-align="center center">
+        <md-button class="md-raised md-primary" ng-click="randomizePool(24)">Randomize Pool!</md-button>
+      </div>
+      <div layout="row" layout-align="center center">
+        <input readonly ng-show="url" value="{{copyUrl()}}">
+      </div>
+      <div layout="row" layout-align="center center">
+        <a ng-click="toast()" clip-copy="copyUrl()" ng-show="url">Copy shareable URL to clipboard</a>
+      </div>
+    </div>
+
+    <md-grid-list md-gutter="5px" md-cols="10" md-cols-sm="4" md-cols-md="6" md-cols-lg="8" md-row-height="120px">
+      <md-grid-tile ng-repeat="champ in champs">
+        <img ng-src="{{champ.imgSquare}}">
+      </md-grid-tile>
+    </md-grid-list>
+  </md-content>
+</div>
